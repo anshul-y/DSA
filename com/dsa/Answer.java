@@ -1,14 +1,13 @@
 package com.dsa;
 
 import java.util.Stack;
-import java.util.logging.Logger;
 
 public class Answer<T> {
-    private static final Logger logger = Logger.getLogger(Answer.class.getName());
     private Stack<T> stack;
     private ListNode head;
 
-    public Answer(){}
+    public Answer() {
+    }
 
     public Answer(Stack<T> stack) {
         this.stack = stack;
@@ -48,6 +47,7 @@ public class Answer<T> {
     public static void print(int data, String mssg) {
         System.out.println(mssg + " : " + data);
     }
+
     public static void print(boolean data, String mssg) {
         System.out.println(mssg + " : " + data);
     }
@@ -63,11 +63,28 @@ public class Answer<T> {
 
     public void printLinkedList() {
         ListNode current = this.head;
-        while(current.next!=null) {
-            System.out.print(current.getData()+" >> ");
+        while (current.next != null) {
+            System.out.print(current.getData() + " >> ");
             current = current.next;
         }
         System.out.print("null");
+        System.out.println();
+    }
+
+    public static void print(int[][] matrix, String mssg) {
+        mssg = mssg + ": ";
+        int n = mssg.length();
+        for (int i = 0; i < matrix.length; i++) {
+            if (i == 0) {
+                System.out.print(mssg);
+            } else {
+                System.out.printf("%1$" + n + "s", "");
+            }
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
         System.out.println();
     }
 
