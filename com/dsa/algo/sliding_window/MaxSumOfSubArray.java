@@ -15,9 +15,9 @@ public class MaxSumOfSubArray {
         int windowStart = 0;
         int windowEnd = 0;
         int windowSize = k;
-        for (int i = 0; i <= nums.length - 1; i++){
-            if(windowEnd==windowSize){
-                windowEnd=0;
+        for (int i = 0; i <= nums.length - 1; i++) {
+            if (windowEnd == windowSize) {
+                windowEnd = 0;
             }
             windowEnd++;
         }
