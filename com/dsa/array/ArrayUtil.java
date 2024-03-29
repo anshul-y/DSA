@@ -1,9 +1,9 @@
 package com.dsa.array;
 
+import com.dsa.Answer;
+
 import java.lang.reflect.Array;
 import java.util.HashMap;
-
-import com.dsa.Answer;
 
 /**
  * ArrayUtil
@@ -11,6 +11,77 @@ import com.dsa.Answer;
 public class ArrayUtil {
 
     ArrayUtil() {
+    }
+
+    public static void main(String[] args) {
+
+        int[] arr = {1, 2, 3, 4, 5};
+        Answer.print(arr, "Default Array");
+
+        ArrayUtil.removeEven(arr);
+
+        ArrayUtil.reverseArray(arr);
+
+        ArrayUtil.minValue(arr);
+
+        ArrayUtil.secondLargestElement(arr);
+
+        ArrayUtil.placeZeroAtEndOfArray(new int[]{0, 3, 2, 0, 1});
+
+        ArrayUtil.resizeArray(arr, 10);
+
+        ArrayUtil.missingElementByMath(new int[]{2, 5, 1, 4});
+
+        ArrayUtil.containsDuplicate(new int[]{7, 6, 4, 3, 1});
+
+        ArrayUtil.productExceptSelf(new int[]{1, 2, 3, 4});
+
+        ArrayUtil.runningSum(new int[]{1, 2, 3, 4});
+
+        int[] numArray = {0, 1, 2, 2, 3, 0, 4, 2};
+        Answer.print(numArray, "Array");
+        int remainingLength = ArrayUtil.removeElement(numArray, 2);
+        Answer.print(remainingLength, "Remaining Length");
+        Answer.print(numArray, "Array");
+
+        int[] duplicateArray = {0, 0, 1, 1, 2, 2, 3,};
+        Answer.print(duplicateArray, "Before removing Duplicates");
+        int arraySize = ArrayUtil.removeDuplicate(duplicateArray);
+        Answer.print(arraySize, "Array Size after removing duplicates");
+        Answer.print(duplicateArray, "After removing Duplicates");
+    }
+
+    private static int removeDuplicate(int[] sortedArray) {
+        int replacingIndx = 1;
+        int iterator = 1;
+        while (iterator < sortedArray.length) {
+            if (sortedArray[iterator] != sortedArray[iterator - 1]) {
+                sortedArray[replacingIndx] = sortedArray[iterator];
+                replacingIndx++;
+            }
+            iterator++;
+        }
+        return replacingIndx;
+    }
+
+    /**
+     * Finds the missing element in the given array.(Two-pointers method)
+     *
+     * @param nums    the array from which the missing element is to be removed
+     * @param element the element to be removed
+     * @return the number of elements in the array after removing the element
+     */
+    public static int removeElement(int[] nums, int element) {
+        int replacingIndx = 0;
+        int iterator = 0;
+        while (iterator < nums.length) {
+            if (nums[iterator] != element) {
+                nums[replacingIndx] = nums[iterator];
+                replacingIndx++;
+            }
+            iterator++;
+        }
+        return replacingIndx;
     }
 
     /**
@@ -22,8 +93,8 @@ public class ArrayUtil {
     public static void removeEven(int[] arr) {
         // Count the number of odd elements in the array
         int oddCount = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] % 2 != 0) {
+        for (int j : arr) {
+            if (j % 2 != 0) {
                 oddCount++;
             }
         }
@@ -33,9 +104,9 @@ public class ArrayUtil {
         int indx = 0;
 
         // Copy odd elements from the original array to the new array
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] % 2 != 0) {
-                oddArray[indx] = arr[i];
+        for (int j : arr) {
+            if (j % 2 != 0) {
+                oddArray[indx] = j;
                 indx++;
             }
         }
@@ -187,7 +258,7 @@ public class ArrayUtil {
 
     /**
      * Finds the missing element in the array by mathematical calculation.
-     *
+     * <p>
      * This method assumes that the array contains elements from the range 1 to n
      * (inclusive), where n is the length of the array plus one. It calculates the
      * sum of all elements from 1 to n using the formula (n * (n + 1)) / 2, then
@@ -216,30 +287,6 @@ public class ArrayUtil {
 
         // Return the missing element
         return sum;
-    }
-
-    public static int maxSubArray(int[] array) {
-        KadanAlgo kadanAlgo = new KadanAlgo(array);
-        int maxSubArray = kadanAlgo.maxSubArray();
-        Answer.print(maxSubArray, "Maximum Sub-array Value");
-        return maxSubArray;
-    }
-
-    public static int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(nums[i])) {
-                int complementIndex = map.get(nums[i]);
-                int[] indices = new int[] { complementIndex, i };
-                Answer.print(indices, "Indexes of element for Two sum to " + target);
-                return indices;
-            } else {
-                int complement = target - nums[i];
-                map.put(complement, i);
-            }
-        }
-        Answer.print(nums, "Indexes of element for Two sum to " + target);
-        return nums;
     }
 
     public static void containsDuplicate(int[] nums) {
@@ -280,44 +327,6 @@ public class ArrayUtil {
         }
         Answer.print(runningSum, "Running Sum");
         return runningSum;
-    }
-
-    public static void main(String[] args) {
-
-        int[] arr = { 1, 2, 3, 4, 5 };
-        Answer.print(arr, "Default Array");
-
-        ArrayUtil.removeEven(arr);
-
-        ArrayUtil.reverseArray(arr);
-
-        ArrayUtil.minValue(arr);
-
-        ArrayUtil.secondLargestElement(arr);
-
-        ArrayUtil.placeZeroAtEndOfArray(new int[] { 0, 3, 2, 0, 1 });
-
-        ArrayUtil.resizeArray(arr, 10);
-
-        ArrayUtil.missingElementByMath(new int[] { 2, 5, 1, 4 });
-
-        ArrayUtil.maxSubArray(new int[] { -2, 1, -3, 4 });
-
-        int[] nums = { 5, 2, 4 };
-        Answer.print(nums, "Default Array");
-        ArrayUtil.twoSum(nums, 6);
-
-        int[] prices = { 7, 6, 4, 1, 3, 1 };
-        Answer.print(prices, "Price Array");
-        int profit = SlidingWindow.maxProfit(prices);
-        Answer.print(profit, "Max profit from stock");
-
-        ArrayUtil.containsDuplicate(new int[] { 7, 6, 4, 3, 1 });
-
-        ArrayUtil.productExceptSelf(new int[] { 1, 2, 3, 4 });
-
-        ArrayUtil.runningSum(new int[] { 1, 2, 3, 4 });
-
     }
 
 }

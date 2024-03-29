@@ -2,8 +2,8 @@ package com.dsa.custom_class;
 
 public class ListNode {  
     private int data;
-    public ListNode next = null;
-    public ListNode previous = null;
+    public ListNode next;
+    public ListNode previous;
 
     public ListNode(int data) {  
         this.data = data;  

@@ -27,7 +27,6 @@ public class OverlappingIntervals {
             }
         }
         result.add(new Interval(start, end));
-        intervals = result;
         return result;
     }
 
@@ -65,6 +64,5 @@ public class OverlappingIntervals {
         nonOverlapIntervals.add(new Interval(8, 10));
         nonOverlapIntervals.add(new Interval(4, 9));
         List<Interval> result =insert(nonOverlapIntervals, new Interval(4, 9));
-        System.out.println(result);
     }
 }
