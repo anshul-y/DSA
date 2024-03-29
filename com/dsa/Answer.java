@@ -1,5 +1,7 @@
 package com.dsa;
 
+import com.dsa.custom_class.ListNode;
+
 import java.util.Stack;
 
 public class Answer<T> {
@@ -49,6 +51,10 @@ public class Answer<T> {
     }
 
     public static void print(boolean data, String mssg) {
+        System.out.println(mssg + " : " + data);
+    }
+
+    public static void print(String data, String mssg) {
         System.out.println(mssg + " : " + data);
     }
 

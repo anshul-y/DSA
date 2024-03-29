@@ -1,6 +1,6 @@
 package com.dsa.tree;
 
-import com.dsa.TreeNode;
+import com.dsa.custom_class.TreeNode;
 
 public class BinarySearchTree {
 

@@ -1,6 +1,6 @@
 package com.dsa.linked_list;
 
-import com.dsa.ListNode;
+import com.dsa.custom_class.ListNode;
 
 
 public class LinkedListUtil {

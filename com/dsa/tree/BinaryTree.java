@@ -1,12 +1,11 @@
 package com.dsa.tree;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
 import com.dsa.Answer;
-import com.dsa.TreeNode;
+import com.dsa.custom_class.TreeNode;
 
 public class BinaryTree {
 

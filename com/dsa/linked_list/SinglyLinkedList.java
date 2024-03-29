@@ -1,7 +1,7 @@
 package com.dsa.linked_list;
 
 import com.dsa.Answer;
-import com.dsa.ListNode;
+import com.dsa.custom_class.ListNode;
 
 public class SinglyLinkedList<T> {
 

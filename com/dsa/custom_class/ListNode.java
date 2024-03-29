@@ -1,4 +1,4 @@
-package com.dsa;
+package com.dsa.custom_class;
 
 public class ListNode {  
     private int data;

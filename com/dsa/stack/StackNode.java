@@ -2,7 +2,7 @@ package com.dsa.stack;
 
 import java.util.EmptyStackException;
 
-import com.dsa.ListNode;
+import com.dsa.custom_class.ListNode;
 
 /**
  * Stack

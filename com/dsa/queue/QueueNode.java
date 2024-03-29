@@ -1,6 +1,6 @@
 package com.dsa.queue;
 
-import com.dsa.ListNode;
+import com.dsa.custom_class.ListNode;
 
 public class QueueNode {
     private ListNode front;

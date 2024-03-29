@@ -2,7 +2,7 @@ package com.dsa.linked_list;
 
 import java.util.NoSuchElementException;
 
-import com.dsa.ListNode;
+import com.dsa.custom_class.ListNode;
 
 public class DoublyLinkedList {
 
