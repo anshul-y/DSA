@@ -1,7 +1,6 @@
 package questions;
 
 import com.dsa.Answer;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * DutchNationFlag
@@ -13,7 +12,7 @@ public class DutchNationFlag {
      *
      * @param arr the array to be sorted
      */
-    private static void sort(int @NotNull [] arr) {
+    private static void sort(int[] arr) {
         int i = 0;
         int j = 0;
         int k = arr.length - 1;
@@ -45,7 +44,7 @@ public class DutchNationFlag {
      * @param i   the index of the first element
      * @param j   the index of the second element
      */
-    private static void swap(int @NotNull [] arr, int i, int j) {
+    private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;

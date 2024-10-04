@@ -51,6 +51,7 @@ public class Answer<T> {
     }
 
     public static void print(boolean data, String mssg) {
+        System.out.println();
         System.out.println(mssg + " : " + data);
     }
 
