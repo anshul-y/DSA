@@ -12,7 +12,6 @@ public class ArrayUtil {
 
     ArrayUtil() {
     }
-
     public static void main(String[] args) {
 
         int[] arr = {1, 2, 3, 4, 5};
@@ -26,7 +25,7 @@ public class ArrayUtil {
 
         ArrayUtil.secondLargestElement(arr);
 
-        ArrayUtil.placeZeroAtEndOfArray(new int[]{0, 3, 2, 0, 1});
+        ArrayUtil.placeZeroAtEndOfArray(new int[]{4, 0, 3, 2, 0, 0, 1});
 
         ArrayUtil.resizeArray(arr, 10);
 
@@ -198,22 +197,57 @@ public class ArrayUtil {
      * @return the modified array with all zeros placed at the end
      */
     public static int[] placeZeroAtEndOfArray(int[] arr) {
-        int index = 0;
+        // 1 Method
+        // int index = 0;
+        // // Traverse through the array, if element is non-zero, move it to the front
+        // for (int i = 0; i < arr.length; i++) {
+        //      if (arr[i] != 0) {
+        //         arr[index++] = arr[i];
+        //      }
+        //  }
+        //  // Fill the remaining positions with zeros
+        //  while (index < arr.length) {
+        //      arr[index++] = 0;
+        //  }
 
-        // Traverse through the array, if element is non-zero, move it to the front
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] != 0) {
-                arr[index++] = arr[i];
+
+        // Method 2: Two-pointer technique
+        // Initialize two pointers: 'pointer' and 'iterator'
+        int pointer = 0;
+        int iterator = 0;
+
+        // Iterate through the array
+        while (iterator < arr.length) {
+            // If the current element is not zero, swap it with the element at 'pointer'
+            // and increment 'pointer'
+            if (arr[iterator] != 0) {
+                swap(arr, pointer, iterator);
+                pointer++;
             }
+            // Move to the next element
+            iterator++;
         }
 
-        // Fill the remaining positions with zeros
-        while (index < arr.length) {
-            arr[index++] = 0;
-        }
+        // After iterating through the array, all non-zero elements have been moved to the front
         // Print the modified array
         Answer.print(arr, "Array with all zeros at the end");
+
+        // Return the modified array
         return arr;
+    }
+
+    /**
+     * Swaps the elements at the given indices in the array.
+     *
+     * @param arr    the array in which the elements are to be swapped
+     * @param index1 the index of the first element to be swapped
+     * @param index2 the index of the second element to be swapped
+     */
+    private static void swap(int[] arr, int index1, int index2) {
+        // Swap the elements at the given indices
+        int temp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = temp;
     }
 
     /**
@@ -233,9 +267,7 @@ public class ArrayUtil {
         // newArray = Arrays.copyOf(arr, size); //Method 2
 
         // Copy elements from the original array to the new array
-        for (int i = 0; i < arr.length; i++) {
-            newArray[i] = arr[i];
-        }
+        System.arraycopy(arr, 0, newArray, 0, arr.length);
 
         // Print the resized array
         Answer.print(newArray, "New Array with size " + newArray.length);
@@ -243,15 +275,14 @@ public class ArrayUtil {
     }
 
     public static <T> T[] resizeArray(T[] arr, int size) {
-        T[] newArray = ((Object) arr.getClass() == (Object) Object[].class)
+        T[] newArray = (arr.getClass() == Object[].class)
                 ? (T[]) new Object[size]
                 : (T[]) Array.newInstance(arr.getClass().getComponentType(), size);
         // System.arraycopy(arr, 0, newArray, 0, arr.length); //Method 1
         // newArray = Arrays.copyOf(arr, size); //Method 2
 
-        for (int i = 0; i < arr.length; i++) { // Method 3
-            newArray[i] = arr[i];
-        }
+        // Method 3
+        System.arraycopy(arr, 0, newArray, 0, arr.length);
         Answer.print(newArray, "New Array with size " + newArray.length);
         return newArray;
     }
@@ -289,44 +320,103 @@ public class ArrayUtil {
         return sum;
     }
 
+    /**
+     * Checks if the given array contains any duplicate elements.
+     *
+     * This function uses a HashMap to keep track of the elements encountered so far.
+     * It iterates over the array and checks if each element is already present in the HashMap.
+     * If a duplicate element is found, the function prints "Array contains duplicate" and returns true.
+     * If no duplicate element is found after iterating through the entire array, the function prints
+     * "Array does not contain duplicate" and returns false.
+     *
+     * @param nums the array of integers to check for duplicates
+     * @return true if the array contains duplicate elements, false otherwise
+     */
     public static void containsDuplicate(int[] nums) {
+        // Create a HashMap to store the elements encountered so far
         HashMap<Integer, Integer> map = new HashMap<>();
+
+        // Iterate over the array
         for (int i = 0; i < nums.length; i++) {
+            // Check if the current element is already present in the HashMap
             if (map.containsKey(nums[i])) {
+                // If a duplicate element is found, print the message and return true
                 Answer.print(true, "Array contains duplicate");
                 return;
             } else {
+                // If no duplicate element is found, add the current element to the HashMap
                 map.put(nums[i], i);
             }
         }
-        Answer.print(false, "Array contain duplicate");
+
+        // If no duplicate element is found after iterating through the entire array,
+        // print the message and return false
+        Answer.print(false, "Array does not contain duplicate");
     }
 
+    /**
+     * Calculates the product of all the numbers in the given array except the number at the current index.
+     *
+     * @param nums the array of integers
+     * @return an array of integers where each element at index i is the product of all the numbers in the input array 
+     * except nums[i]
+     */
     public static int[] productExceptSelf(int[] nums) {
-        int[] productArray = new int[nums.length];
+        // Initialize an array to store the final products
+        int[] result = new int[nums.length];
+
+        // Calculate prefix products:
+        // For each element at index i, the prefix product is the product of all numbers from index 0 to i-1.
+        // This is stored in the result array at index i.
+        int prefix = 1;
         for (int i = 0; i < nums.length; i++) {
-            int product = 1;
-            for (int j = 0; j < nums.length; j++) {
-                if (i == j)
-                    continue;
-                product *= nums[j];
-            }
-            productArray[i] = product;
+            result[i] = prefix;
+            prefix *= nums[i];
         }
-        Answer.print(productArray, "Product of Array Except Self");
-        return productArray;
+
+        // Calculate suffix products and combine with prefix products:
+        // For each element at index i, the suffix product is the product of all numbers from index i+1 to the end.
+        // Multiply the prefix product at index i with the suffix product at index i to get the final product.
+        // Store the final product in the result array at index i.
+        int suffix = 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            result[i] *= suffix; // Multiply with the suffix product
+            suffix *= nums[i];
+        }
+
+        // Output the result array
+        Answer.print(result, "Product of Array Except Self");
+
+        // Return the result array
+        return result;
     }
 
+    /**
+     * Calculates the running sum of the given array.
+     *
+     * The running sum of an array is an array where each element at index i is the sum of all elements in the original
+     * array up to and including index i.
+     *
+     * @param nums the array of integers for which the running sum is to be calculated
+     * @return an array of integers where each element at index i is the sum of all the numbers in the input array up to
+     * and including index i
+     *
+     * Time complexity: O(n), where n is the length of the input array. This is because we iterate over the array once
+     * to calculate the running sum.
+     */
     public static int[] runningSum(int[] nums) {
-        int n = nums.length;
-        int[] runningSum = new int[n];
-        int sum = 0;
+        int n = nums.length; // Get the length of the input array
+        int[] runningSum = new int[n]; // Initialize an array to store the running sum
+        int sum = 0; // Initialize a variable to store the running sum
+
+        // Iterate over the input array
         for (int i = 0; i < n; i++) {
-            sum = sum + nums[i];
-            runningSum[i] = sum;
+            sum = sum + nums[i]; // Add the current element to the running sum
+            runningSum[i] = sum; // Store the running sum in the corresponding index of the running sum array
         }
-        Answer.print(runningSum, "Running Sum");
-        return runningSum;
+
+        Answer.print(runningSum, "Running Sum"); // Print the running sum array
+        return runningSum; // Return the running sum array
     }
 
 }
