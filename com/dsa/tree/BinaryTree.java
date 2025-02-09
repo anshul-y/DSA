@@ -11,6 +11,38 @@ public class BinaryTree {
 
     TreeNode root;
 
+    public static void main(String[] args) {
+        BinaryTree binaryTree = new BinaryTree();
+        TreeNode binaryTreeRoot = binaryTree.createBinaryTree();
+        //        binaryTree.buildTree(1, 2, 3, 4, 5);
+        binaryTree.printTree();
+        // 1
+        // / \
+        // 2 3
+        // / \
+        // 4 5
+
+        // binaryTree.preOrderRecursiveTraverse(binaryTree.getRoot());
+        binaryTree.preOrderIterativeTraverse(binaryTree.getRoot());
+
+        // binaryTree.inOrderRecursiveTraverse(binaryTree.getRoot());
+        binaryTree.inOrderIterativeTraverse(binaryTree.getRoot());
+
+        // binaryTree.postOrderRecursiveTraverse(binaryTree.getRoot());
+        binaryTree.postOrderIterativeTraverse(binaryTree.getRoot());
+
+        binaryTree.levelOrderTraverse(binaryTree.getRoot());
+
+        int max = binaryTree.findMax(binaryTree.getRoot());
+        Answer.print(max, "Maximum number in Binary Tree");
+
+        BinaryTree symmetricTree = new BinaryTree();
+        symmetricTree.buildTree(1, 2, 2, 3, 0, 0, 3);
+        symmetricTree.printTree();
+        boolean isSymmetric = binaryTree.isSymmetricBFS(symmetricTree.getRoot());
+        Answer.print(isSymmetric, "Binary Tree is symmetric");
+    }
+
     public TreeNode getRoot() {
         return this.root;
     }
@@ -241,38 +273,6 @@ public class BinaryTree {
 
     public void isSymmetricDFS(TreeNode root) {
 
-    }
-
-    public static void main(String[] args) {
-        BinaryTree binaryTree = new BinaryTree();
-        TreeNode binaryTreeRoot = binaryTree.createBinaryTree();
-//        binaryTree.buildTree(1, 2, 3, 4, 5);
-        binaryTree.printTree();
-        // 1
-        // / \
-        // 2 3
-        // / \
-        // 4 5
-
-        // binaryTree.preOrderRecursiveTraverse(binaryTree.getRoot());
-        binaryTree.preOrderIterativeTraverse(binaryTree.getRoot());
-
-        // binaryTree.inOrderRecursiveTraverse(binaryTree.getRoot());
-        binaryTree.inOrderIterativeTraverse(binaryTree.getRoot());
-
-        // binaryTree.postOrderRecursiveTraverse(binaryTree.getRoot());
-        binaryTree.postOrderIterativeTraverse(binaryTree.getRoot());
-
-        binaryTree.levelOrderTraverse(binaryTree.getRoot());
-
-        int max = binaryTree.findMax(binaryTree.getRoot());
-        Answer.print(max, "Maximum number in Binary Tree");
-
-        BinaryTree symmetricTree = new BinaryTree();
-        symmetricTree.buildTree(1,2,2,3,0,0,3);
-        symmetricTree.printTree();
-        boolean isSymmetric = binaryTree.isSymmetricBFS(symmetricTree.getRoot());
-        Answer.print(isSymmetric, "Binary Tree is symmetric");
     }
 
 }

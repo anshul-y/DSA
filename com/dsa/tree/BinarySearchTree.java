@@ -6,6 +6,28 @@ public class BinarySearchTree {
 
     private TreeNode root;
 
+
+    /**
+     * The main method of the program.
+     * Creates a BinarySearchTree object and performs various operations on it.
+     */
+    public static void main(String[] args) {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+        bst.insert(1);
+
+        bst.inOrder();
+
+        if (bst.search(8) != null) {
+            System.out.println("Key Found !!");
+        }
+
+        bst.createBinarySearchTree();
+        System.out.println(bst.isValid());
+    }
+
     /**
      * Creates a binary search tree with the following structure:
      * 
@@ -86,6 +108,7 @@ public class BinarySearchTree {
 
     /**
      * Performs an in-order traversal of a binary tree rooted at the given node.
+     * Left -> Root -> Right
      */
     public void inOrder() {
         inOrder(root);
@@ -159,26 +182,5 @@ public class BinarySearchTree {
             return isValid(root.rightNode, root.data, max);
         }
         return false;
-    }
-
-    /**
-     * The main method of the program.
-     * Creates a BinarySearchTree object and performs various operations on it.
-     */
-    public static void main(String[] args) {
-        BinarySearchTree bst = new BinarySearchTree();
-        // bst.insert(5);
-        // bst.insert(3);
-        // bst.insert(7);
-        // bst.insert(1);
-
-        // bst.inOrder();
-
-        // if (bst.search(8) != null) {
-        // System.out.println("Key Found !!");
-        // }
-
-        // bst.createBinarySearchTree();
-        // System.out.println(bst.isValid());
     }
 }
