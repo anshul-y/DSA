@@ -1,11 +1,23 @@
 package com.dsa.stack;
 
-import java.util.Stack;
-
 import com.dsa.Answer;
 import com.dsa.array.ArrayUtil;
 
+import java.util.Stack;
+
 public class StackUtil {
+
+    public static void main(String[] args) {
+        int[] nums = {4, 7, 3, 4, 8, 1};
+        Answer.print(nums, "Array");
+
+        StackUtil.nextGreaterElement(nums);
+
+        StackUtil.nextSmallerElement(ArrayUtil.reverseArray(nums));
+
+        boolean result = StackUtil.isBracesBalanced("{()}{");
+        Answer.print(result, "Balanced Brackets");
+    }
 
     /**
      * Finds the next greater element for each element in the given array.
@@ -94,17 +106,5 @@ public class StackUtil {
             }
         }
         return stack.isEmpty();
-    }
-
-    public static void main(String[] args) {
-        int[] nums = { 4, 7, 3, 4, 8, 1 };
-        Answer.print(nums, "Array");
-
-        StackUtil.nextGreaterElement(nums);
-
-        StackUtil.nextSmallerElement(ArrayUtil.reverseArray(nums));
-
-        boolean result = StackUtil.isBracesBalanced("{()}{");
-        Answer.print(result, "Balanced Brackets");
     }
 }
