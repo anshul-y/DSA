@@ -37,6 +37,8 @@ public class ArrayUtil {
 
         ArrayUtil.runningSum(new int[]{1, 2, 3, 4});
 
+        ArrayUtil.majorityElement(new int[]{2, 2, 1, 1, 1, 2, 2});
+
         int[] numArray = {0, 1, 2, 2, 3, 0, 4, 2};
         Answer.print(numArray, "Array");
         int remainingLength = ArrayUtil.removeElement(numArray, 2);
@@ -48,6 +50,24 @@ public class ArrayUtil {
         int arraySize = ArrayUtil.removeDuplicate(duplicateArray);
         Answer.print(arraySize, "Array Size after removing duplicates");
         Answer.print(duplicateArray, "After removing Duplicates");
+    }
+
+    public static int majorityElement(int[] nums) {
+        // Boyer-Moore Mojority Voting Algo
+        int candidate = nums[0];
+        int count = 0;
+        for (int n : nums) {
+            if (candidate == n) {
+                count++;
+            } else {
+                count--;
+                if (count == 0) {
+                    candidate = n;
+                    count++;
+                }
+            }
+        }
+        return candidate;
     }
 
     private static int removeDuplicate(int[] sortedArray) {

@@ -22,7 +22,6 @@ public class Matrix {
 
     /**
      * Traverses a matrix in a spiral pattern and prints the elements.
-     * 
      * @param matrix the matrix to be traversed
      * @param row    the number of rows in the matrix
      * @param col    the number of columns in the matrix
@@ -64,22 +63,22 @@ public class Matrix {
     }
 
     public static int[][] getSortedMatrix() {
-        return new int[][] {
-                { 10, 20, 30, 40 },
-                { 15, 25, 35, 45 },
-                { 27, 29, 37, 48 },
-                { 32, 33, 39, 51 }
+        return new int[][]{
+                {10, 20, 30, 40},
+                {15, 25, 35, 45},
+                {27, 29, 37, 48},
+                {32, 33, 39, 51}
         };
     }
 
     public static void main(String[] args) {
-        // search(getSortedMatrix(), 4, 37);
-        
+        search(getSortedMatrix(), 4, 37);
+
         int[][] matrix = {
-                { 1, 2, 3, 4 },
-                { 12, 13, 14, 5 },
-                { 11, 16, 15, 6 },
-                { 10, 9, 8, 7 }
+                {1, 2, 3, 4},
+                {12, 13, 14, 5},
+                {11, 16, 15, 6},
+                {10, 9, 8, 7}
         };
         spiralTraverse(matrix, 4, 4);
     }
