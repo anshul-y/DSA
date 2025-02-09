@@ -1,7 +1,6 @@
 package com.dsa.hash_table;
 
 import com.dsa.Answer;
-import com.dsa.custom_class.HashNode;
 
 import java.util.Objects;
 

@@ -17,6 +17,17 @@ public class ContainDuplicate {
         Answer.print(duplicateCheck, "Contains Duplicate");
     }
 
+    /**
+     * Checks if an integer array contains any duplicate values.
+     *
+     * <p>This function uses a HashSet to keep track of the elements encountered so far.
+     * It iterates through the array and checks if each element is already present in the HashSet.
+     * If a duplicate is found, the function immediately returns true. If no duplicates are found
+     * after iterating through the entire array, the function returns false.
+     *
+     * @param nums the integer array to check for duplicates
+     * @return true if any duplicate values are found in the array, false otherwise
+     */
     private static boolean isContainsDuplicate(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int n : nums) {
