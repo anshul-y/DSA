@@ -8,6 +8,30 @@ public class LinkedListUtil {
     LinkedListUtil() {
     }
 
+    public static void main(String[] args) {
+
+        SinglyLinkedList<Integer> firstLL = new SinglyLinkedList<>();
+        firstLL.insertFirst(5);
+        firstLL.insertEnd(4);
+        // firstLL.insertEnd(6);
+        firstLL.print();
+
+
+        SinglyLinkedList<Integer> secondLL = new SinglyLinkedList<>();
+        secondLL.insertFirst(5);
+        secondLL.insertEnd(6);
+        secondLL.insertEnd(4);
+        secondLL.print();
+
+        ListNode sum = LinkedListUtil.addList(firstLL.head, secondLL.head);
+        print(sum);
+
+        // sort(firstLL.head);
+        // sort(secondLL.head);
+        // ListNode mergeHeadNode = LinkedListUtil.mergeSort(firstLL.head, secondLL.head);
+        // print(mergeHeadNode);
+    }
+
     private static void print(ListNode mergeHeadNode) {
         while (mergeHeadNode != null) {
             System.out.print(mergeHeadNode.getData() + " >> ");
@@ -61,46 +85,19 @@ public class LinkedListUtil {
         ListNode tail = dummy;
         int carry = 0;
         while (a != null || b != null) {
-            int x = a!=null?a.getData():0;
-            int y = b!=null?b.getData():0;
+            int x = a != null ? a.getData() : 0;
+            int y = b != null ? b.getData() : 0;
             int sum = x + y + carry;
             carry = sum / 10;
             sum = sum % 10;
             tail.next = new ListNode(sum);
-            if(a!=null) a = a.next;
-            if(b!=null) b = b.next;
+            if (a != null) a = a.next;
+            if (b != null) b = b.next;
             tail = tail.next;
         }
-        if(carry!=0){
+        if (carry != 0) {
             tail.next = new ListNode(carry);
         }
         return dummy.next;
     }
-
-    public static void main(String[] args) {
-
-        SinglyLinkedList<Integer> firstLL = new SinglyLinkedList<>();
-        firstLL.insertFirst(5);
-        firstLL.insertEnd(4);
-        // firstLL.insertEnd(6);
-        firstLL.print();
-
-
-        SinglyLinkedList<Integer> secondLL = new SinglyLinkedList<>();
-        secondLL.insertFirst(5);
-        secondLL.insertEnd(6);
-        secondLL.insertEnd(4);
-        secondLL.print();
-
-        ListNode sum = LinkedListUtil.addList(firstLL.head, secondLL.head);
-        print(sum);
-
-        // sort(firstLL.head);
-        // sort(secondLL.head);
-        // ListNode mergeHeadNode = LinkedListUtil.mergeSort(firstLL.head, secondLL.head);
-        // print(mergeHeadNode);
-    }
-
-    
-
 }
